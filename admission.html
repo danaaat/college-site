@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приемная комиссия - Алматинский Экономический Колледж</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/jsstyle.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        /* ================= HEADER ================= */
+        .header {
+            background: white;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            height: 60px;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav ul li a:hover,
+        .nav ul li a.active {
+            color: #4169E1;
+        }
+
+        .nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #4169E1;
+        }
+
+        /* ================= SCHEDULE SECTION ================= */
+        .schedule-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 60px 40px 60px;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 15px;
+            margin-bottom: 60px;
+        }
+
+        .schedule-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .schedule-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .schedule-day {
+            font-size: 16px;
+            font-weight: 700;
+            background: linear-gradient(107deg, rgba(64, 84, 255, 1) 0%, rgba(24, 38, 202, 1) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .schedule-time {
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* ================= DOCUMENTS SECTION ================= */
+        .documents-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 60px 80px 60px;
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .document-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .document-card h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .document-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .document-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .document-list li {
+            font-size: 14px;
+            color: #333;
+            padding: 12px 0;
+            padding-left: 35px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .document-list li:last-child {
+            border-bottom: none;
+        }
+
+        .document-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #4169E1;
+        }
+
+        .document-list li::after {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            color: #4169E1;
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .document-note {
+            background: #F8F9FF;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 13px;
+            color: #4169E1;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* ================= PAYMENT INFO ================= */
+        .payment-info {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .payment-info p {
+            font-size: 15px;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        /* ================= CTA BUTTON ================= */
+        .cta-section {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .cta-btn {
+            background: linear-gradient(107deg, rgba(64, 84, 255, 1) 0%, rgba(24, 38, 202, 1) 100%);
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(64, 84, 255, 0.4);
+        }
+
+        /* ================= FOOTER ================= */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 60px 30px 60px;
+            margin-top: 0;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1.5fr 1.5fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #b0b0b0;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links li a {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-links li a:hover {
+            color: #4169E1;
+        }
+
+        .footer-contact p {
+            font-size: 14px;
+            color: #b0b0b0;
+            margin-bottom: 10px;
+        }
+
+        .footer-contact a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .footer-contact a:hover {
+            color: #4169E1;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: #4169E1;
+            transform: translateY(-3px);
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 1024px) {
+            .header {
+                padding: 20px 40px;
+            }
+
+            .nav ul {
+                gap: 20px;
+            }
+
+            .nav ul li a {
+                font-size: 13px;
+            }
+
+            .schedule-section,
+            .documents-section {
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+
+            .schedule-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .documents-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .schedule-section,
+            .documents-section {
+                padding: 40px 20px;
+            }
+
+            .schedule-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .document-card {
+                padding: 30px 25px;
+            }
+
+            .footer {
+                padding: 40px 20px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+    <img src="img/aec.svg" class="logo" alt="Логотип АЭК">
+    <nav class="nav">
+        <ul>
+            <li><a href="/index.html">Главная</a></li>
+            <li><a href="/about.html">О нас</a></li>
+            <li><a href="/specialties.html">Специальности</a></li>
+            <li><a href="/partners.html">Партнеры</a></li>
+            <li><a href="/admission.html" class="active">Приемная комиссия</a></li>
+            <li><a href="/umos.html">УМО</a></li>
+            <li><a href="/contacts.html">Контакты</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- ================= SCHEDULE SECTION ================= -->
+<section class="schedule-section">
+    <div class="schedule-grid">
+        <div class="schedule-card">
+            <div class="schedule-day">ПН</div>
+            <div class="schedule-time">9:00—17:00</div>
+        </div>
+
+        <div class="schedule-card">
+            <div class="schedule-day">ВТ</div>
+            <div class="schedule-time">9:00—17:00</div>
+        </div>
+
+        <div class="schedule-card">
+            <div class="schedule-day">СР</div>
+            <div class="schedule-time">9:00—17:00</div>
+        </div>
+
+        <div class="schedule-card">
+            <div class="schedule-day">ЧТ</div>
+            <div class="schedule-time">9:00—17:00</div>
+        </div>
+
+        <div class="schedule-card">
+            <div class="schedule-day">ПТ</div>
+            <div class="schedule-time">9:00—17:00</div>
+        </div>
+
+        <div class="schedule-card">
+            <div class="schedule-day">СБ</div>
+            <div class="schedule-time">9:00—14:00</div>
+        </div>
+
+        <div class="schedule-card">
+            <div class="schedule-day">ВС</div>
+            <div class="schedule-time">выходной</div>
+        </div>
+
+        <div class="schedule-card">
+            <div class="schedule-day">ОБЕД</div>
+            <div class="schedule-time">13:00—14:00</div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= DOCUMENTS SECTION ================= -->
+<section class="documents-section">
+    <div class="documents-grid">
+        <!-- Для базы 9-11 -->
+        <div class="document-card">
+            <h2>Необходимые документы для поступления в колледж на базе 9-11 классов</h2>
+            <p>Для успешного поступления в колледж необходимо предоставить следующие документы:</p>
+            
+            <ul class="document-list">
+                <li>Документ об образовании (подлинник)</li>
+                <li>4 фото 3×4 (матовый)</li>
+                <li>Медицинская справка (форма 075У, форма 063), снимок флюорографии</li>
+                <li>Копия удостоверения (свидетельство о рождении и ИИН)</li>
+                <li>Копия удостоверения родителей</li>
+                <li>Места (при наличии)</li>
+                <li>ЭЦП ключ родителей или законного представителя</li>
+                <li>Скорпоршиватель (бумажная папка дело)</li>
+                <li>Конверт</li>
+            </ul>
+
+            <div class="document-note">
+                Срок обучения на базе 9 классов: 2г. 10 мес.<br>
+                Срок обучения на базе 11 классов: 1г. 10мес.
+            </div>
+        </div>
+
+        <!-- Для других колледжей -->
+        <div class="document-card">
+            <h2>Необходимые документы для поступления в колледж из других колледжей с переводом</h2>
+            <p>Для успешного поступления в колледж необходимо предоставить следующие документы:</p>
+            
+            <ul class="document-list">
+                <li>Документ об образовании (подлинник)</li>
+                <li>Копия зачетной книжки</li>
+                <li>4 фото 3×4 (матовый)</li>
+                <li>Медицинская справка (форма 075У, форма 063), снимок флюорографии</li>
+                <li>Копия удостоверения (свидетельство о рождении и ИИН)</li>
+                <li>ЭЦП ключ родителей или законного представителя</li>
+                <li>Скорпоршиватель (бумажная папка дело)</li>
+                <li>Конверт</li>
+            </ul>
+
+            <div class="document-note">
+                После первого курса: 1г. 10 мес.<br>
+                После второго курса: 10 мес.
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= PAYMENT INFO ================= -->
+    <div class="payment-info">
+        <p>Оплата за обучение производится поэтапно<br>
+        Иногородним предоставляется общежитие</p>
+    </div>
+
+    <!-- ================= CTA SECTION ================= -->
+    <div class="cta-section">
+        <a href="#" class="cta-btn">
+            Оставить заявку
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>АЭК</h3>
+            <p>Государственный колледж с многолетним опытом подготовки востребованных специалистов</p>
+        </div>
+
+        <div class="footer-section">
+            <h3>Полезные ссылки</h3>
+            <ul class="footer-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="specialties.html">Специальности</a></li>
+                <li><a href="partners.html">Партнеры</a></li>
+                <li><a href="admission.html">Приемная комиссия</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Контакты</h3>
+            <div class="footer-contact">
+                <p>+7 (705) 349 24 01</p>
+                <p>+7 (702) 627 50 69</p>
+                <a href="mailto:aec.official.almaty@gmail.com">aec.official.almaty@gmail.com</a>
+                
+                <div class="footer-social">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="js/page-animations.js"></script>
+    <script src="/js/chatbot.js"></script>
+</body>
+</html>

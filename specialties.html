@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Специальности - Алматинский Экономический Колледж</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/jsstyle.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        /* шапка */
+        .header {
+            background: white;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            height: 60px;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav ul li a:hover,
+        .nav ul li a.active {
+            color: #4169E1;
+        }
+
+        .nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #4169E1;
+        }
+
+        /* специальности */
+        .specialties-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 60px;
+        }
+
+        .specialties-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .specialty-card {
+            background: white;
+            border-radius: 20px;
+            padding: 45px 35px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .specialty-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .specialty-icon {
+            font-size: 56px;
+            margin-bottom: 25px;
+        }
+
+        .specialty-card h3 {
+            font-size: 19px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 18px;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .specialty-card p {
+            font-size: 13px;
+            line-height: 1.7;
+            color: #666;
+            margin-bottom: 28px;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .specialty-info {
+            margin-bottom: 28px;
+            width: 100%;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            font-size: 13px;
+        }
+
+        .info-label {
+            color: #4169E1;
+            font-weight: 500;
+            text-align: left;
+        }
+
+        .info-value {
+            color: #1a1a1a;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .specialty-btn {
+            background: #4054FF;
+            background: linear-gradient(149deg, rgba(64, 84, 255, 1) 0%, rgba(24, 38, 202, 1) 100%);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .specialty-btn:hover {
+            background: #2952CC;
+            transform: translateY(-2px);
+        }
+
+        .more-btn-wrapper {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .more-btn {
+            background: #4054FF;
+            background: linear-gradient(149deg, rgba(64, 84, 255, 1) 0%, rgba(24, 38, 202, 1) 100%);
+            color: white;
+            border: none;
+            padding: 15px 45px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .more-btn:hover {
+            background: #2952CC;
+            transform: translateY(-2px);
+        }
+
+        /* подвал */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 60px 30px 60px;
+            margin-top: 80px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1.5fr 1.5fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #b0b0b0;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links li a {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-links li a:hover {
+            color: #4169E1;
+        }
+
+        .footer-contact p {
+            font-size: 14px;
+            color: #b0b0b0;
+            margin-bottom: 10px;
+        }
+
+        .footer-contact a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-contact a:hover {
+            color: #4169E1;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: #4169E1;
+            transform: translateY(-3px);
+        }
+
+        /* адаптив */
+        @media (max-width: 1200px) {
+            .specialties-section {
+                max-width: 1000px;
+            }
+
+            .specialties-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .header {
+                padding: 20px 40px;
+            }
+
+            .nav ul {
+                gap: 20px;
+            }
+
+            .nav ul li a {
+                font-size: 13px;
+            }
+
+            .specialties-section {
+                padding: 60px 40px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .specialties-section {
+                padding: 40px 20px;
+            }
+
+            .specialties-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer {
+                padding: 40px 20px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- шапка -->
+<header class="header">
+    <img src="img/aec.svg" class="logo" alt="Логотип АЭК">
+    <nav class="nav">
+        <ul>
+            <li><a href="/index.html">Главная</a></li>
+            <li><a href="/about.html">О нас</a></li>
+            <li><a href="/specialties.html" class="active">Специальности</a></li>
+            <li><a href="/partners.html">Партнеры</a></li>
+            <li><a href="/admission.html">Приемная комиссия</a></li>
+            <li><a href="/umos.html">УМО</a></li>
+            <li><a href="/contacts.html">Контакты</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- специальности -->
+<section class="specialties-section">
+    <div class="specialties-grid">
+        <!-- разработчик -->
+        <div class="specialty-card">
+            <div class="specialty-icon"><img src="img/Laptop.svg" alt="Разработчик"></div>
+            <h3>Разработчик</h3>
+            <p>Менеджер по банковским операциям — специалист, который предоставляет и контролирует банковские услуги и финансовые операции.</p>
+            
+            <div class="specialty-info">
+                <div class="info-row">
+                    <span class="info-label">Срок обучения</span>
+                    <span class="info-value">2г. 10мес. / 1г. 10мес.</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Стоимость</span>
+                    <span class="info-value">500 000 тенге</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Квалификация</span>
+                    <span class="info-value">40040301</span>
+                </div>
+            </div>
+            
+            <a href="/specialties/specialty-developer.html" class="specialty-btn">
+                Узнать больше
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- web-дизайнер -->
+        <div class="specialty-card">
+            <div class="specialty-icon"><img src="img/Artist Palette.svg" alt=""></div>
+            <h3>Web — дизайнер</h3>
+            <p>Web дизайнер — это специалист, который разрабатывает визуальное и удобное оформление сайта.</p>
+            
+            <div class="specialty-info">
+                <div class="info-row">
+                    <span class="info-label">Срок обучения</span>
+                    <span class="info-value">2г. 10мес. / 1г. 10мес.</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Стоимость</span>
+                    <span class="info-value">500 000 тенге</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Квалификация</span>
+                    <span class="info-value">40040302</span>
+                </div>
+            </div>
+            
+            <a href="/specialties/specialty-webdesigner.html" class="specialty-btn">
+                Узнать больше
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- бухгалтер -->
+        <div class="specialty-card">
+            <div class="specialty-icon"><img src="img/Bar Chart.svg" alt=""></div>
+            <h3>Бухгалтер</h3>
+            <p>Бухгалтер — специалист который ведёт финансовую деятельность: собирает, обрабатывает и анализирует денежную информацию.</p>
+            
+            <div class="specialty-info">
+                <div class="info-row">
+                    <span class="info-label">Срок обучения</span>
+                    <span class="info-value">2г. 10мес. / 1г. 10мес.</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Стоимость</span>
+                    <span class="info-value">500 000 тенге</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Квалификация</span>
+                    <span class="info-value">04040301</span>
+                </div>
+            </div>
+            
+            <a href="/specialties/specialty-accountant.html" class="specialty-btn">
+                Узнать больше
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- менеджер по банковским операциям -->
+        <div class="specialty-card">
+            <div class="specialty-icon"><img src="img/Bank2.svg" alt=""></div>
+            <h3>Менеджер по банковским операциям</h3>
+            <p>Менеджер по банковским операциям — специалист, который предоставляет и контролирует банковские услуги и финансовые операции.</p>
+            
+            <div class="specialty-info">
+                <div class="info-row">
+                    <span class="info-label">Срок обучения</span>
+                    <span class="info-value">2г. 10мес. / 1г. 10мес.</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Стоимость</span>
+                    <span class="info-value">500 000 тенге</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Квалификация</span>
+                    <span class="info-value">40040301</span>
+                </div>
+            </div>
+            
+            <a href="/specialties/specialty-bank.html" class="specialty-btn">
+                Узнать больше
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- кондитер -->
+        <div class="specialty-card">
+            <div class="specialty-icon"><img src="img/Shortcake.svg" alt=""></div>
+            <h3>Кондитер</h3>
+            <p>Кондитер — это специалист, который изменил вкус и аромат кондитерских изделий: торты, пирожные и другие сладости.</p>
+            
+            <div class="specialty-info">
+                <div class="info-row">
+                    <span class="info-label">Срок обучения</span>
+                    <span class="info-value">2г. 10мес. / 1г. 10мес.</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Стоимость</span>
+                    <span class="info-value">400 000 тенге</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Квалификация</span>
+                    <span class="info-value">3AG070302</span>
+                </div>
+            </div>
+            
+            <a href="/specialties/specialty-confectioner.html" class="specialty-btn">
+                Узнать больше
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- оператор по производству пива -->
+        <div class="specialty-card">
+            <div class="specialty-icon"><img src="img/Beer Mug.svg" alt=""></div>
+            <h3>Оператор по производству пива</h3>
+            <p>Приготовление пива, безалкогольных и слабоалкогольных напитков — это специальность только на одноимённой, которая изучает все технологические.</p>
+            
+            <div class="specialty-info">
+                <div class="info-row">
+                    <span class="info-label">Срок обучения</span>
+                    <span class="info-value">2г. 10мес. / 1г. 10мес.</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Стоимость</span>
+                    <span class="info-value">400 000 тенге</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Квалификация</span>
+                    <span class="info-value">3AG070602</span>
+                </div>
+            </div>
+            
+            <a href="/specialties/specialty-beer.html" class="specialty-btn">
+                Узнать больше
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- повар -->
+        <div class="specialty-card">
+            <div class="specialty-icon"><img src="img/Man Cook Light Skin Tone.svg" alt=""></div>
+            <h3>Повар</h3>
+            <p>Повар — это специалист, который изменил вкус и создаёт блюда в кафе, ресторанах и других заведениях общественного.</p>
+            
+            <div class="specialty-info">
+                <div class="info-row">
+                    <span class="info-label">Срок обучения</span>
+                    <span class="info-value">2г. 10мес. / 1г. 10мес.</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Стоимость</span>
+                    <span class="info-value">400 000 тенге</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Квалификация</span>
+                    <span class="info-value">3AG107002</span>
+                </div>
+            </div>
+            
+            <a href="/specialties/specialty-cook.html" class="specialty-btn">
+                Узнать больше
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="more-btn-wrapper">
+        <a href="index.html" class="more-btn">
+            Назад
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+</section>
+
+<!-- подвал -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>АЭК</h3>
+            <p>Государственный колледж с многолетним опытом подготовки востребованных специалистов</p>
+        </div>
+
+        <div class="footer-section">
+            <h3>Полезные ссылки</h3>
+            <ul class="footer-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="specialties.html">Специальности</a></li>
+                <li><a href="#">Партнеры</a></li>
+                <li><a href="#">Приемная комиссия</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Контакты</h3>
+            <div class="footer-contact">
+                <p>+7 (705) 349 24 01</p>
+                <p>+7 (702) 627 50 69</p>
+                <p><a href="mailto:aec.official.almaty@gmail.com">aec.official.almaty@gmail.com</a></p>
+                
+                <div class="footer-social">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="js/page-animations.js"></script>
+    <script src="/js/chatbot.js"></script>
+</body>
+</html>

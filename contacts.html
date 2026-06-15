@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Алматинский Экономический Колледж</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/jsstyle.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        /* ================= HEADER ================= */
+        .header {
+            background: white;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            height: 60px;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav ul li a:hover,
+        .nav ul li a.active {
+            color: #4169E1;
+        }
+
+        .nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #4169E1;
+        }
+
+        /* ================= CONTACT SECTION ================= */
+        .contact-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 60px 100px 60px;
+        }
+
+        .contact-container {
+            border: 3px solid #4169E1;
+            border-radius: 20px;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .contact-map {
+            background: #d0d0d0;
+            min-height: 500px;
+            position: relative;
+        }
+
+        .contact-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .contact-info {
+            padding: 60px 50px;
+            background: white;
+        }
+
+        .contact-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .info-item {
+            margin-bottom: 35px;
+        }
+
+        .info-item-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .info-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4169E1;
+            font-size: 18px;
+        }
+
+        .info-label {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        .info-text {
+            font-size: 14px;
+            color: #666;
+            margin-left: 36px;
+            line-height: 1.6;
+        }
+
+        .info-text a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .info-text a:hover {
+            color: #4169E1;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-left: 36px;
+            margin-top: 12px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            border-color: #4169E1;
+            color: #4169E1;
+            transform: translateY(-3px);
+        }
+
+        /* ================= FOOTER ================= */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 60px 30px 60px;
+            margin-top: 0;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1.5fr 1.5fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #b0b0b0;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links li a {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-links li a:hover {
+            color: #4169E1;
+        }
+
+        .footer-contact p {
+            font-size: 14px;
+            color: #b0b0b0;
+            margin-bottom: 10px;
+        }
+
+        .footer-contact a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .footer-contact a:hover {
+            color: #4169E1;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: #4169E1;
+            transform: translateY(-3px);
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 1024px) {
+            .header {
+                padding: 20px 40px;
+            }
+
+            .nav ul {
+                gap: 20px;
+            }
+
+            .nav ul li a {
+                font-size: 13px;
+            }
+
+            .contact-section {
+                padding: 60px 40px 80px 40px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-map {
+                min-height: 400px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .contact-section {
+                padding: 40px 20px 60px 20px;
+            }
+
+            .contact-info {
+                padding: 40px 30px;
+            }
+
+            .footer {
+                padding: 40px 20px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+    <img src="img/aec.svg" class="logo" alt="Логотип АЭК">
+    <nav class="nav">
+        <ul>
+            <li><a href="/index.html">Главная</a></li>
+            <li><a href="/about.html">О нас</a></li>
+            <li><a href="/specialties.html">Специальности</a></li>
+            <li><a href="/partners.html">Партнеры</a></li>
+            <li><a href="/admission.html">Приемная комиссия</a></li>
+            <li><a href="/umos.html">УМО</a></li>
+            <li><a href="/contacts.html" class="active">Контакты</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- ================= CONTACT SECTION ================= -->
+<section class="contact-section">
+    <div class="contact-container">
+        <div class="contact-grid">
+            <!-- Map -->
+            <div class="contact-map">
+                <!-- Вставьте сюда карту 2ГИС -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1221.7017045383789!2d76.92257405177034!3d43.25744233136992!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38836eb272b8a59b%3A0x649566a0d2e716a5!2z0JDQu9C80LDRgtC40L3RgdC60LjQuSDRjdC60L7QvdC-0LzQuNGH0LXRgdC60LjQuSDQutC-0LvQu9C10LTQtg!5e0!3m2!1sru!2sus!4v1779319186547!5m2!1sru!2sus"  width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen loading="lazy" title="Карта — АЭК"></iframe>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <h2 class="contact-title">Информация</h2>
+
+                <!-- Адрес -->
+                <div class="info-item">
+                    <div class="info-item-header">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-label">Адрес</div>
+                    </div>
+                    <div class="info-text">
+                        Г. Алматы, ул. Гоголя 124
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="info-item">
+                    <div class="info-item-header">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-label">Email</div>
+                    </div>
+                    <div class="info-text">
+                        <a href="mailto:aecofficial.almaty@gmail.com">aecofficial.almaty@gmail.com</a>
+                    </div>
+                </div>
+
+                <!-- Телефоны -->
+                <div class="info-item">
+                    <div class="info-item-header">
+                        <div class="info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="info-label">Телефоны</div>
+                    </div>
+                    <div class="info-text">
+                        +7 (705) 349 24 01<br>
+                        +7 (702) 627 50 69
+                    </div>
+                </div>
+
+                <!-- Соцсети -->
+                <div class="info-item">
+                    <div class="info-item-header">
+                        <div class="info-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="info-label">Соцсети</div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>АЭК</h3>
+            <p>Государственный колледж с многолетним опытом подготовки востребованных специалистов</p>
+        </div>
+
+        <div class="footer-section">
+            <h3>Полезные ссылки</h3>
+            <ul class="footer-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="specialties.html">Специальности</a></li>
+                <li><a href="partners.html">Партнеры</a></li>
+                <li><a href="admission.html">Приемная комиссия</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Контакты</h3>
+            <div class="footer-contact">
+                <p>+7 (705) 349 24 01</p>
+                <p>+7 (702) 627 50 69</p>
+                <a href="mailto:aecofficial.almaty@gmail.com">aecofficial.almaty@gmail.com</a>
+                
+                <div class="footer-social">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="js/page-animations.js"></script>
+    <script src="/js/chatbot.js"></script>
+</body>
+</html>

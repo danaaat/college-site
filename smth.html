@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Алматинский Экономический Колледж</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        /* ================= HEADER ================= */
+        .header {
+            background: white;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            height: 60px;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav ul li a:hover,
+        .nav ul li a.active {
+            color: #4169E1;
+        }
+
+        .nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #4169E1;
+        }
+
+        /* ================= HERO SECTION ================= */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 80px 0 0 0;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .wave img {
+            width: 100%;
+            display: block;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 56px;
+            font-weight: 700;
+            color: white;
+            line-height: 1.2;
+            margin-bottom: 25px;
+        }
+
+        .hero-content p {
+            font-size: 16px;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.7;
+            margin-bottom: 35px;
+        }
+
+        .btn {
+            background: white;
+            color: #4169E1;
+            border: none;
+            padding: 15px 40px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .hero-image {
+            text-align: right;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .stats-wrapper {
+            position: relative;
+            z-index: 2;
+            padding: 60px 60px 80px 60px;
+        }
+
+        .stats {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat span {
+            display: block;
+            font-size: 48px;
+            font-weight: 700;
+            color: #4169E1;
+            margin-bottom: 10px;
+        }
+
+        .stat p {
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* ================= SECTIONS ================= */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 60px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 60px;
+        }
+
+        /* ================= FEATURES ================= */
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .feature {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-main {
+            grid-row: span 2;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .feature-main h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .feature-main p {
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .feature-main .btn {
+            align-self: flex-start;
+        }
+
+        .feature .icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .feature h4 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .feature p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* ================= SPECIALTIES ================= */
+        .specialties {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-content h4 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .card-content ul {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .card-content ul li {
+            font-size: 14px;
+            color: #666;
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .card-content ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4169E1;
+            font-weight: 700;
+        }
+
+        .btn-small {
+            padding: 12px 30px;
+            font-size: 14px;
+        }
+
+        .card-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* ================= FAQ SECTION ================= */
+        .faq-section {
+            background: white;
+            padding: 80px 60px;
+        }
+
+        .faq-title {
+            text-align: center;
+            font-size: 40px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 60px;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: #FAFAFA;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-question {
+            padding: 25px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .faq-question:hover {
+            color: #4169E1;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s;
+            color: #4169E1;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 30px;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #666;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 30px 25px 30px;
+        }
+
+        /* ================= CONTACT SECTION ================= */
+        .contact-section {
+            background: #f5f5f5;
+            padding: 80px 60px;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-title {
+            text-align: center;
+            font-size: 40px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 60px;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 50px;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .contact-map {
+            background: #e0e0e0;
+            min-height: 500px;
+        }
+
+        .contact-info {
+            padding: 50px;
+        }
+
+        .info-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: #f0f0ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4169E1;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .info-label {
+            font-size: 12px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .info-text {
+            font-size: 15px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f0f0ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4169E1;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: #4169E1;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* ================= FOOTER ================= */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 60px 30px 60px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1.5fr 1.5fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #b0b0b0;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links li a {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-links li a:hover {
+            color: #4169E1;
+        }
+
+        .footer-contact p {
+            font-size: 14px;
+            color: #b0b0b0;
+            margin-bottom: 10px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: #4169E1;
+            transform: translateY(-3px);
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 1024px) {
+            .header {
+                padding: 20px 40px;
+            }
+
+            .nav ul {
+                gap: 20px;
+            }
+
+            .nav ul li a {
+                font-size: 13px;
+            }
+
+            .hero-container,
+            .container,
+            .faq-section,
+            .contact-section,
+            .footer {
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+
+            .hero-content h1 {
+                font-size: 42px;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features,
+            .specialties {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-main {
+                grid-row: auto;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                padding: 0 20px;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .hero-image {
+                text-align: center;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                padding: 30px;
+            }
+
+            .stat span {
+                font-size: 36px;
+            }
+
+            .container,
+            .faq-section,
+            .contact-section,
+            .footer {
+                padding: 40px 20px;
+            }
+
+            .section-title,
+            .faq-title,
+            .contact-title {
+                font-size: 32px;
+            }
+
+            .card {
+                grid-template-columns: 1fr;
+                padding: 30px;
+            }
+
+            .contact-info {
+                padding: 30px 20px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+    <img src="img/aec.svg" class="logo" alt="Логотип АЭК">
+    <nav class="nav">
+        <ul>
+            <li><a href="#" class="active">Главная</a></li>
+            <li><a href="/about.html">О нас</a></li>
+            <li><a href="#">Специальности</a></li>
+            <li><a href="#">Партнеры</a></li>
+            <li><a href="#">Приемная комиссия</a></li>
+            <li><a href="#">УМО</a></li>
+            <li><a href="#">Контакты</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- ================= HERO SECTION ================= -->
+<section class="hero">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1>Алматинский<br>Экономический<br>Колледж</h1>
+            <p>Государственное учебное заведение, которое<br>более 80 лет готовит квалифицированные кадры<br>по специальностям</p>
+            <button class="btn">Оставить заявку</button>
+        </div>
+
+        <div class="hero-image">
+            <img src="img/graduates.png" alt="Выпускники">
+        </div>
+    </div>
+
+    <div class="wave">
+        <img src="img/wave.svg" alt="">
+    </div>
+
+    <!-- СТАТИСТИКА -->
+    <div class="stats-wrapper">
+        <div class="stats">
+            <div class="stat">
+                <span>2500</span>
+                <p>Выпусков</p>
+            </div>
+            <div class="stat">
+                <span>10</span>
+                <p>Квалификаций</p>
+            </div>
+            <div class="stat">
+                <span>7</span>
+                <p>Специальностей</p>
+            </div>
+            <div class="stat">
+                <span>100%</span>
+                <p>Качества</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= WHY US SECTION ================= -->
+<section class="container">
+    <h2 class="section-title">Почему выбирают нас?</h2>
+
+    <div class="features">
+        <div class="feature feature-main">
+            <div>
+                <h3>Почему выбирают нас?</h3>
+                <p>
+                    Наш колледж имеет все необходимые аккредитации и признания,
+                    подтверждающие высокий уровень образования. Наши учебные программы
+                    соответствуют самым современным требованиям.
+                </p>
+            </div>
+            <button class="btn">Читать больше →</button>
+        </div>
+
+        <div class="feature">
+            <div class="icon">🎓</div>
+            <h4>Образовательные программы</h4>
+            <p>Образование, ориентированное на актуальные потребности рынка труда.</p>
+        </div>
+
+        <div class="feature">
+            <div class="icon">👨‍🏫</div>
+            <h4>Опытные преподаватели</h4>
+            <p>Высококвалифицированный состав и всесторонняя поддержка студентов.</p>
+        </div>
+
+        <div class="feature">
+            <div class="icon">📈</div>
+            <h4>Карьерные возможности</h4>
+            <p>Стажировки, ярмарки вакансий и помощь в трудоустройстве.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ================= SPECIALTIES SECTION ================= -->
+<section class="container">
+    <h2 class="section-title">Наши специальности</h2>
+
+    <div class="specialties">
+        <div class="card card--software">
+            <div class="card-content">
+                <h4>Программное обеспечение</h4>
+                <ul>
+                    <li>Web-дизайнер</li>
+                    <li>Разработчик программного обеспечения</li>
+                </ul>
+                <button class="btn btn-small">Подробнее →</button>
+            </div>
+            <div class="card-image">
+                <img src="img/software.svg" alt="Программное обеспечение">
+            </div>
+        </div>
+
+        <div class="card card--bank">
+            <div class="card-content">
+                <h4>Банковское дело</h4>
+                <ul>
+                    <li>Менеджер банковских операций</li>
+                </ul>
+                <button class="btn btn-small">Подробнее →</button>
+            </div>
+            <div class="card-image">
+                <img src="img/bank.svg" alt="Банковское дело">
+            </div>
+        </div>
+
+        <div class="card card--food">
+            <div class="card-content">
+                <h4>Организация питания</h4>
+                <ul>
+                    <li>Оператор по производству</li>
+                    <li>Кондитер</li>
+                    <li>Повар</li>
+                </ul>
+                <button class="btn btn-small">Подробнее →</button>
+            </div>
+            <div class="card-image">
+                <img src="img/food.svg" alt="Организация питания">
+            </div>
+        </div>
+
+        <div class="card card--accounting">
+            <div class="card-content">
+                <h4>Учет и аудит</h4>
+                <ul>
+                    <li>Бухгалтер</li>
+                </ul>
+                <button class="btn btn-small">Подробнее →</button>
+            </div>
+            <div class="card-image">
+                <img src="img/accounting.svg" alt="Учет и аудит">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= FAQ SECTION ================= -->
+<section class="faq-section">
+    <h2 class="faq-title">Часто задаваемые вопросы</h2>
+    
+    <div class="faq-container">
+        <div class="faq-item">
+            <div class="faq-question">
+                Какие документы нужны для поступления?
+                <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+            </div>
+            <div class="faq-answer">
+                Для поступления необходимо: документ об образовании (подлинник), ЭЦП ключ, 6 фотографий 3х4, медицинская справка формы №075/у, №063, снимок флюорографии, копия удостоверения личности (индивидуальная и родителей), и для иностранных (выдувка) граждан).
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                Какова стоимость платного обучения?
+                <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+            </div>
+            <div class="faq-answer">
+                Стоимость обучения составляет 500 тысяч тенге для специалистов среднего звена и 400 тысяч тенге по рабочим квалификациям. Оплата производится поэтапно.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                Есть ли возможность поступить на грант?
+                <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+            </div>
+            <div class="faq-answer">
+                Да, Алматинский экономический колледж предоставляет грантовые места по всем 7 специальностям. Грантовые места означают бесплатное обучение.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                Есть ли общежитие?
+                <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+            </div>
+            <div class="faq-answer">
+                Да, иногородним студентам предоставляется общежитие.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                Студенческая жизнь и внеучебные мероприятия
+                <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+            </div>
+            <div class="faq-answer">
+                Студенческая жизнь в АЭК — это яркий, насыщенный и многогранный этап в жизни каждого студента. Здесь создаются не только профессиональные навыки, но и формируются личностные качества, развивается лидерство, инициатива и социальная активность.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= CONTACT SECTION ================= -->
+<section class="contact-section">
+    <div class="contact-container">
+        <h2 class="contact-title">Контакты</h2>
+        
+        <div class="contact-content">
+            <div class="contact-map">
+                <!-- Здесь можно вставить Google Maps iframe -->
+                <!-- <iframe src="..." width="100%" height="100%" frameborder="0"></iframe> -->
+            </div>
+
+            <div class="contact-info">
+                <h3 class="info-title">Информация</h3>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-details">
+                        <div class="info-label">Адрес</div>
+                        <div class="info-text">г. Алматы, ул. Гоголя 124</div>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-details">
+                        <div class="info-label">Email</div>
+                        <div class="info-text">aec.official.almaty@gmail.com</div>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="info-details">
+                        <div class="info-label">Телефоны</div>
+                        <div class="info-text">+7 (705) 349 24 01</div>
+                        <div class="info-text">+7 (727) 627 50 69</div>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <div class="info-details">
+                        <div class="info-label">Соцсети</div>
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="YouTube">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>АЭК</h3>
+            <p>Государственный колледж с многолетним опытом подготовки востребованных специалистов</p>
+        </div>
+
+        <div class="footer-section">
+            <h3>Полезные ссылки</h3>
+            <ul class="footer-links">
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Специальности</a></li>
+                <li><a href="#">Партнеры</a></li>
+                <li><a href="#">Приемная комиссия</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Контакты</h3>
+            <div class="footer-contact">
+                <p>+7 (705) 349 24 01</p>
+                <p>+7 (727) 627 50 69</p>
+                <p>aec.official.almaty@gmail.com</p>
+                
+                <div class="footer-social">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // FAQ Accordion functionality
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', () => {
+            // Toggle active class
+            const isActive = item.classList.contains('active');
+            
+            // Close all other items
+            faqItems.forEach(otherItem => {
+                otherItem.classList.remove('active');
+            });
+            
+            // If wasn't active, open it
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+</script>
+
+    <script src="/js/chatbot.js"></script>
+</body>
+</html>

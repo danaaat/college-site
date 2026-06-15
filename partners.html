@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Партнеры - Алматинский Экономический Колледж</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/jsstyle.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        /* шапка */
+        .header {
+            background: white;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            height: 60px;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav ul li a:hover,
+        .nav ul li a.active {
+            color: #4169E1;
+        }
+
+        .nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #4169E1;
+        }
+
+        /* партнёры */
+        .partners-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 60px 120px 60px;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .partner-card {
+            background: white;
+            border-radius: 12px;
+            padding: 22px 18px 16px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            min-height: 130px;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(65,105,225,0.13);
+        }
+
+        .partner-logo {
+            width: 100%;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .partner-logo img {
+            max-width: 140px;
+            max-height: 52px;
+            object-fit: contain;
+            transition: opacity 0.3s;
+        }
+
+        .partner-card:hover .partner-logo img {
+            opacity: 0.85;
+        }
+
+        .partner-name {
+            font-size: 11.5px;
+            font-weight: 600;
+            color: #444;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        /* подвал */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 60px 30px 60px;
+            margin-top: 0;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1.5fr 1.5fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #b0b0b0;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links li a {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-links li a:hover {
+            color: #4169E1;
+        }
+
+        .footer-contact p {
+            font-size: 14px;
+            color: #b0b0b0;
+            margin-bottom: 10px;
+        }
+
+        .footer-contact a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .footer-contact a:hover {
+            color: #4169E1;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: #4169E1;
+            transform: translateY(-3px);
+        }
+
+        /* адаптив */
+        @media (max-width: 1200px) {
+            .partners-section {
+                max-width: 1000px;
+            }
+
+            .partners-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .header {
+                padding: 20px 40px;
+            }
+
+            .nav ul {
+                gap: 20px;
+            }
+
+            .nav ul li a {
+                font-size: 13px;
+            }
+
+            .partners-section {
+                padding: 60px 40px 100px 40px;
+            }
+
+            .partners-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .partners-section {
+                padding: 40px 20px 80px 20px;
+            }
+
+            .partners-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer {
+                padding: 40px 20px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- шапка -->
+<header class="header">
+    <img src="img/aec.svg" class="logo" alt="Логотип АЭК">
+    <nav class="nav">
+        <ul>
+            <li><a href="/index.html">Главная</a></li>
+            <li><a href="/about.html">О нас</a></li>
+            <li><a href="/specialties.html">Специальности</a></li>
+            <li><a href="/partners.html" class="active">Партнеры</a></li>
+            <li><a href="/admission.html">Приемная комиссия</a></li>
+            <li><a href="/umos.html">УМО</a></li>
+            <li><a href="/contacts.html">Контакты</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- партнёры -->
+<section class="partners-section">
+    <div class="partners-grid">
+
+        <!-- банки и финансы -->
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="partner/channels4_profile.jpg" alt="Народный банк Казахстана">
+            </div>
+            <div class="partner-name">АО «Народный банк Казахстана»</div>
+        </div>
+
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="partner/ForteBank.jpg" alt="ForteBank">
+            </div>
+            <div class="partner-name">АО «ForteBank»</div>
+        </div>
+
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="partner/kaspi.png" alt="Kaspi Bank">
+            </div>
+            <div class="partner-name">АО «Kaspi Bank»</div>
+        </div>
+
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="partner/Отбасы Банк.jpg" alt="Отбасы банк">
+            </div>
+            <div class="partner-name">АО «Отбасы банк»</div>
+        </div>
+
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="partner/Eurasian Bank.jpg" alt="Евразийский банк">
+            </div>
+            <div class="partner-name">АО «Евразийский банк»</div>
+        </div>
+
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="partner/Bank RBK.png" alt="Банк РБК">
+            </div>
+            <div class="partner-name">АО «Банк РБК»</div>
+        </div>
+
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="partner/Halyk Life.jpg" alt="Halyk-Life">
+            </div>
+            <div class="partner-name">АО «Halyk-Life»</div>
+        </div>
+
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="partner/unnamed.png" alt="Партнёр">
+            </div>
+            <div class="partner-name">АО "CenterCredit"</div>
+        </div>
+
+        <!-- почта и логистика -->
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="partner/QazPost_logo.svg.png" alt="QazPost">
+            </div>
+            <div class="partner-name">АО «QazPost»</div>
+        </div>
+
+        <!-- пиво и напитки -->
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="partner/Carlsberg.jpg" alt="Carlsberg Kazakhstan">
+            </div>
+            <div class="partner-name">ТОО «Carlsberg Kazakhstan»</div>
+        </div>
+
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="partner/Line Brew.png" alt="Line Brew">
+            </div>
+            <div class="partner-name">ТОО «Line Brew»</div>
+        </div>
+
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="partner/Беккер и К.jpg" alt="Беккер и К">
+            </div>
+            <div class="partner-name">ТОО «Беккер и К»</div>
+        </div>
+
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="partner/Galanz Bottlers.png" alt="Galanz Bottlers">
+            </div>
+            <div class="partner-name">ТОО «Galanz Bottlers»</div>
+        </div>
+
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="partner/Tassay.jpg" alt="Tassay">
+            </div>
+            <div class="partner-name">ТОО «Tassay»</div>
+        </div>
+
+        <!-- продукты питания -->
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="partner/АО Рахат.png" alt="АО Рахат">
+            </div>
+            <div class="partner-name">АО «Рахат»</div>
+        </div>
+
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="partner/Qulpynai.png" alt="Qulpynai">
+            </div>
+            <div class="partner-name">Qulpynai</div>
+        </div>
+
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="partner/Аксай Нан.jpg" alt="Аксай Нан">
+            </div>
+            <div class="partner-name">ТОО «Аксай Нан»</div>
+        </div>
+
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="partner/«Magnum Cash&amp;Carry».jpg" alt="Magnum Cash&amp;Carry">
+            </div>
+            <div class="partner-name">ТОО «Magnum Cash&amp;Carry»</div>
+        </div>
+
+        <!-- гостиницы -->
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="partner/Гостиница «The Ritz Carlton».png" alt="The Ritz Carlton">
+            </div>
+            <div class="partner-name">Гостиница «The Ritz Carlton»</div>
+        </div>
+
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="partner/«Grand Hotel «Тин-Шан».jpg" alt="Grand Hotel Тин-Шан">
+            </div>
+            <div class="partner-name">Grand Hotel «Тин-Шан»</div>
+        </div>
+
+        <!-- образование -->
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="partner/Abai University.jpg" alt="КазНПУ им. Абая">
+            </div>
+            <div class="partner-name">КазНПУ им. Абая</div>
+        </div>
+
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="partner/Daryn.png" alt="Дарын">
+            </div>
+            <div class="partner-name">РОО «Дарын»</div>
+        </div>
+
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="partner/Daryn Teacher.png" alt="Daryn Teacher">
+            </div>
+            <div class="partner-name">Daryn Teacher</div>
+        </div>
+
+        <!-- it и инновации -->
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="partner/Kolesa Group.jpg" alt="Kolesa Group">
+            </div>
+            <div class="partner-name">ТОО «Kolesa Group»</div>
+        </div>
+
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="partner/Caspian Innovation Center.png" alt="Caspian Innovation Center">
+            </div>
+            <div class="partner-name">Caspian Innovation Center</div>
+        </div>
+
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="partner/Sandyq.png" alt="Sandyq">
+            </div>
+            <div class="partner-name">SANDYQ</div>
+        </div>
+
+    </div>
+</section>
+
+<!-- подвал -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>АЭК</h3>
+            <p>Государственный колледж с многолетним опытом подготовки востребованных специалистов</p>
+        </div>
+
+        <div class="footer-section">
+            <h3>Полезные ссылки</h3>
+            <ul class="footer-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="specialties.html">Специальности</a></li>
+                <li><a href="partners.html">Партнеры</a></li>
+                <li><a href="#">Приемная комиссия</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Контакты</h3>
+            <div class="footer-contact">
+                <p>+7 (705) 349 24 01</p>
+                <p>+7 (702) 627 50 69</p>
+                <a href="mailto:aec.official.almaty@gmail.com">aec.official.almaty@gmail.com</a>
+                
+                <div class="footer-social">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="js/page-animations.js"></script>
+    <script src="/js/chatbot.js"></script>
+</body>
+</html>

@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Алматинский Экономический Колледж</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/jsstyle.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        /* шапка */
+        .header {
+            background: white;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            height: 60px;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav ul li a:hover,
+        .nav ul li a.active {
+            color: #4169E1;
+        }
+
+        .nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #4169E1;
+        }
+
+        /* основной контент */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 60px 80px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            background: linear-gradient(107deg, rgba(64, 84, 255, 1) 0%, rgba(24, 38, 202, 1) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .intro-text {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: #FAFAFA;
+            border-radius: 12px;
+            padding: 25px 30px;
+            border: 1px solid #f0f0f0;
+        }
+
+        .feature-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #000;
+        }
+
+        .icon {
+            font-size: 18px;
+        }
+
+        .feature-text {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .history-section {
+            margin-top: 50px;
+        }
+
+        .history-text {
+            font-size: 13px;
+            line-height: 1.8;
+            color: #000;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            font-weight: 700;
+            background: linear-gradient(107deg, rgba(64, 84, 255, 1) 0%, rgba(24, 38, 202, 1) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 80px 0 60px 0;
+        }
+
+        .admin-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .admin-card {
+            background: #FAFAFA;
+            border-radius: 16px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .admin-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .admin-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            background: #e0e0e0;
+        }
+
+        .admin-info {
+            padding: 20px 15px;
+        }
+
+        .admin-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 5px;
+        }
+
+        .admin-position {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .single-admin {
+            max-width: 350px;
+            margin: 0 auto 80px auto;
+        }
+
+        .reviews-section {
+            margin-top: 60px;
+        }
+
+        .reviews-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            background: linear-gradient(107deg, rgba(64, 84, 255, 1) 0%, rgba(24, 38, 202, 1) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 40px;
+        }
+
+        .reviews-carousel-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .reviews-track-outer {
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .reviews-track {
+            display: flex;
+            gap: 24px;
+            transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .review-card {
+            background: #FAFAFA;
+            border-radius: 22px;
+            padding: 32px 28px;
+            border: 1px solid #f0f0f0;
+            flex: 0 0 calc(50% - 12px);
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
+        }
+
+        .review-stars {
+            color: #f5a623;
+            font-size: 20px;
+            letter-spacing: 2px;
+        }
+
+        .review-text {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.75;
+            flex: 1;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .review-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4054FF, #1826CA);
+            color: #fff;
+            font-size: 17px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .review-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: #111;
+        }
+
+        .review-specialty {
+            font-size: 12px;
+            color: #888;
+            margin-top: 2px;
+        }
+
+        .reviews-arrow {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid #e0e0e0;
+            background: #fff;
+            font-size: 26px;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4169E1;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .reviews-arrow:hover {
+            background: #4169E1;
+            border-color: #4169E1;
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        .reviews-arrow:disabled {
+            opacity: 0.3;
+            cursor: default;
+            transform: none;
+        }
+
+        .reviews-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 28px;
+        }
+
+        .reviews-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #d0d0d0;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+
+        .reviews-dot.active {
+            background: #4169E1;
+            transform: scale(1.3);
+        }
+
+        /* подвал */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 60px 30px 60px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1.5fr 1.5fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #b0b0b0;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links li a {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-links li a:hover {
+            color: #4169E1;
+        }
+
+        .footer-contact p {
+            font-size: 14px;
+            color: #b0b0b0;
+            margin-bottom: 10px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: #4169E1;
+            transform: translateY(-3px);
+        }
+
+        /* адаптив */
+        @media (max-width: 1024px) {
+            .header {
+                padding: 20px 40px;
+            }
+
+            .nav ul {
+                gap: 20px;
+            }
+
+            .nav ul li a {
+                font-size: 13px;
+            }
+
+            .container {
+                padding: 40px 50px;
+            }
+
+            .admin-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .container {
+                padding: 30px 25px;
+                margin-top: 20px;
+            }
+
+            .title {
+                font-size: 36px;
+            }
+
+            .features-grid,
+            .admin-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .review-card {
+                flex: 0 0 100%;
+            }
+
+            .reviews-arrow {
+                width: 36px;
+                height: 36px;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- шапка -->
+<header class="header">
+    <img src="img/aec.svg" class="logo" alt="Логотип АЭК">
+    <nav class="nav">
+        <ul>
+            <li><a href="/index.html">Главная</a></li>
+            <li><a href="/about.html" class="active">О нас</a></li>
+            <li><a href="/specialties.html">Специальности</a></li>
+            <li><a href="/partners.html">Партнеры</a></li>
+            <li><a href="/admission.html">Приемная комиссия</a></li>
+            <li><a href="/umos.html">УМО</a></li>
+            <li><a href="/contacts.html">Контакты</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- основной контент -->
+<div class="container">
+    <h1 class="title">АЭК — ЭТО</h1>
+    
+    <p class="intro-text">
+        Государственный колледж с более чем 80-летней историей.<br>
+        Готовим квалифицированных специалистов в области экономики, технологий, IT и общественного питания.
+    </p>
+    
+    <p class="intro-text">
+        Обучаем по востребованным программам, давая студентам всё необходимое для успешной карьеры: знания, навыки и практический опыт.
+    </p>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-header">
+                <span> <img class="icon" src="img/Direct Hit.svg" width="36" height="40"> </span>
+                <span>Что предлагаем</span>
+            </div>
+            <p class="feature-text">
+                Обучение по востребованным специальностям с акцентом на практику, навыки и карьерный рост.<br>
+                Программы адаптированы под требования современного рынка.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-header">
+                <span class="icon"><img class="icon" src="img/Man Teacher Medium Light Skin Tone.svg" width="30" height="40"></span>
+                <span>Преподаватели</span>
+            </div>
+            <p class="feature-text">
+                Опытные педагоги и практики — передают не только знания, но и реальные инструменты для будущих профессий: от практических навыков до понимания рынка и требований работодателей.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-header">
+                <span class="icon"><img class="icon" src="img/Laptop.svg" width="25" height="30"></span>
+                <span>Подход к обучению</span>
+            </div>
+            <p class="feature-text">
+                Современные технологии, интерактивные материалы, новые методы — делаем обучение эффективным и интересным, помогая студентам быстрее усваивать знания и применять их на практике.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-header">
+                <span class="icon"><img class="icon" src="img/Globe Showing Europe Africa.svg" width="30" height="40"></span>
+                <span>Международные возможности</span>
+            </div>
+            <p class="feature-text">
+                Мы активно сотрудничаем с зарубежными учебными заведениями и компаниями, предоставляя студентам возможности для обмена и международных стажировок.
+            </p>
+        </div>
+    </div>
+
+    <div class="history-section">
+        <p class="history-text">
+            Алматинский экономический колледж (АЭК) – государственное учебное заведение, которое более 80 лет готовит квалифицированные кадры по специальностям экономического и технологического профилей, в сфере питания и информационных технологий.
+        </p>
+
+        <p class="history-text">
+            Алматинский экономический колледж (до 1993 года Алматинский политехникум) образован в 1942 г. на территории сахарного комбината в поселке имени Кирова Талды-Корганской (ныне Талдыкорганской) области. Это первым в Республике техникум Союзного значения, готовящий в то время кадры только по одной специальности «Технология сахарного производства». Первый выпуск специалистов, в количестве 9 человек, состоялся в 1945 г.
+        </p>
+
+        <p class="history-text">
+            На сегодняшний день по специальностям «Учет и аудит», «Банковское и страховое дело», «Программное обеспечение», «Хлебопекарное, макаронное и кондитерское производство», «Организация питания» и «Производство пива, безалкогольных и спиртных напитков» ведётся подготовка специалистов, контингент составляет 1327 студентов на очном отделении.
+        </p>
+
+        <p class="history-text">
+            Наши программы предлагают обучение по востребованным специальностям, обеспечивая студентов необходимыми знаниями и навыками для успешной карьеры.
+        </p>
+    </div>
+
+    <h2 class="section-title">Состав администрации</h2>
+
+    <div class="admin-grid">
+        <div class="admin-card">
+            <img src="img/Қасымбек Жаксыбай Нурлыбайулы.svg" alt="Директор" class="admin-image">
+            <div class="admin-info">
+                <div class="admin-name">Қасымбек Жаксыбай Нурлыбайулы</div>
+                <div class="admin-position">Директор ГКПП "Алматинский<br>экономический колледж"</div>
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <img src="img/Даулетбаева Жадыра Тлеубаевна.svg" alt="Заместитель" class="admin-image">
+            <div class="admin-info">
+                <div class="admin-name">Даулетбаева Жадыра Тлеубаевна</div>
+                <div class="admin-position">Заместитель директора</div>
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <img src="img/Абильдаева Галия Абдыкуловна.svg" alt="Заместитель" class="admin-image">
+            <div class="admin-info">
+                <div class="admin-name">Абильдаева Галия Абдыкуловна</div>
+                <div class="admin-position">Заместитель директора</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="admin-grid">
+        <div class="admin-card">
+            <img src="img/Калабаева Гульжамал Калдыбековна.svg" alt="Методист" class="admin-image">
+            <div class="admin-info">
+                <div class="admin-name">Калабаева Гульжамал Калдыбековна</div>
+                <div class="admin-position">Методист</div>
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <img src="img/Лысенко Валерия Юрьевна.svg" alt="Методист" class="admin-image">
+             <div class="admin-info">
+                <div class="admin-name">Лысенко Валерия Юрьевна</div>
+                <div class="admin-position">Заместитель директора по учебно-методическому объединению (УМО)</div>
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <img src="img/Тайкпанова Данара Абдибаевна.svg" alt="Методист" class="admin-image">
+            <div class="admin-info">
+                <div class="admin-name">Тайкпанова Данара Абдибаевна</div>
+                <div class="admin-position">Заместитель директора по воспитательной работе</div>
+            </div>
+        </div>
+    </div>
+
+     <div class="admin-grid">
+        <div class="admin-card">
+            <img src="img/Естаев Данат Болатович.svg" alt="Методист" class="admin-image">
+            <div class="admin-info">
+                <div class="admin-name">Естаев Данат Болатович</div>
+                <div class="admin-position">Заместитель директора по информационным технологиям</div>
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <img src="img/Адамбаева Жанна Сериковна.svg" alt="Методист" class="admin-image">
+             <div class="admin-info">
+                <div class="admin-name">Адамбаева Жанна Сериковна</div>
+                <div class="admin-position">Заведующая финансово-экономического отделения </div>
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <img src="img/Аманкулова Гулфия Ахметовна.svg" alt="Методист" class="admin-image">
+            <div class="admin-info">
+                <div class="admin-name">Аманкулова Гулфия Ахметовна</div>
+                <div class="admin-position">Заведующая технологического отделения</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="reviews-section">
+        <h2 class="reviews-title">Отзывы выпускников</h2>
+
+        <div class="reviews-carousel-wrapper">
+            <button class="reviews-arrow reviews-arrow--prev" aria-label="Назад">&#8249;</button>
+
+            <div class="reviews-track-outer">
+                <div class="reviews-track">
+
+                    <div class="review-card">
+                        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <p class="review-text">«После окончания специальности "Разработчик ПО" я сразу устроился в IT-компанию. Преподаватели давали реальные навыки, а не только теорию. Очень доволен выбором колледжа!»</p>
+                        <div class="review-author">
+                            <div class="review-avatar">А</div>
+                            <div class="review-info">
+                                <div class="review-name">Алибек Сейткали</div>
+                                <div class="review-specialty">Разработчик ПО, 2023</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <p class="review-text">«Благодаря специальности "Бухгалтер" я нашла работу ещё до выпуска. Колледж даёт отличную практическую базу и помогает с трудоустройством. Рекомендую всем!»</p>
+                        <div class="review-author">
+                            <div class="review-avatar">А</div>
+                            <div class="review-info">
+                                <div class="review-name">Айгерим Нурланова</div>
+                                <div class="review-specialty">Бухгалтер, 2022</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <p class="review-text">«Учился по специальности "Банковское дело". Преподаватели — профессионалы с опытом работы в банках. Полученные знания применяю каждый день в работе менеджером.»</p>
+                        <div class="review-author">
+                            <div class="review-avatar">Д</div>
+                            <div class="review-info">
+                                <div class="review-name">Данияр Ахметов</div>
+                                <div class="review-specialty">Менеджер банковских операций, 2023</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <p class="review-text">«Web-дизайн в АЭК — это мощная школа. Портфолио, которое я собрала за годы учёбы, помогло мне сразу получить первый заказ. Атмосфера в колледже очень тёплая и дружная.»</p>
+                        <div class="review-author">
+                            <div class="review-avatar">М</div>
+                            <div class="review-info">
+                                <div class="review-name">Мадина Касымова</div>
+                                <div class="review-specialty">Web-дизайнер, 2024</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <p class="review-text">«Специальность "Повар" открыла мне дверь в ресторанный бизнес. Практика на реальных кухнях города — это бесценный опыт. Теперь работаю шеф-поваром в ресторане.»</p>
+                        <div class="review-author">
+                            <div class="review-avatar">Е</div>
+                            <div class="review-info">
+                                <div class="review-name">Ерлан Сапаров</div>
+                                <div class="review-specialty">Повар, 2022</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <button class="reviews-arrow reviews-arrow--next" aria-label="Вперёд">&#8250;</button>
+        </div>
+
+        <div class="reviews-dots"></div>
+    </div>
+</div>
+
+<!-- подвал -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>АЭК</h3>
+            <p>Государственный колледж с многолетним опытом подготовки востребованных специалистов</p>
+        </div>
+
+        <div class="footer-section">
+            <h3>Полезные ссылки</h3>
+            <ul class="footer-links">
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Специальности</a></li>
+                <li><a href="#">Партнеры</a></li>
+                <li><a href="#">Приемная комиссия</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Контакты</h3>
+            <div class="footer-contact">
+                <p>+7 (705) 349 24 01</p>
+                <p>+7 (727) 627 50 69</p>
+                <p>aec.official.almaty@gmail.com</p>
+                
+                <div class="footer-social">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="js/page-animations.js"></script>
+<script>
+    (function () {
+        const track = document.querySelector('.reviews-track');
+        if (!track) return;
+        const cards = Array.from(track.children);
+        const dotsContainer = document.querySelector('.reviews-dots');
+        const prevBtn = document.querySelector('.reviews-arrow--prev');
+        const nextBtn = document.querySelector('.reviews-arrow--next');
+
+        function getVisible() {
+            return window.innerWidth <= 768 ? 1 : 2;
+        }
+
+        let current = 0;
+        const total = cards.length;
+
+        function buildDots() {
+            dotsContainer.innerHTML = '';
+            const pages = total - getVisible() + 1;
+            for (let i = 0; i < pages; i++) {
+                const dot = document.createElement('button');
+                dot.className = 'reviews-dot' + (i === 0 ? ' active' : '');
+                dot.addEventListener('click', () => goTo(i));
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function goTo(index) {
+            const pages = total - getVisible() + 1;
+            current = Math.max(0, Math.min(index, pages - 1));
+            const cardWidth = cards[0].getBoundingClientRect().width + 24;
+            track.style.transform = `translateX(-${current * cardWidth}px)`;
+            dotsContainer.querySelectorAll('.reviews-dot').forEach((d, i) => {
+                d.classList.toggle('active', i === current);
+            });
+            if (prevBtn) prevBtn.disabled = current === 0;
+            if (nextBtn) nextBtn.disabled = current >= pages - 1;
+        }
+
+        if (prevBtn) prevBtn.addEventListener('click', () => goTo(current - 1));
+        if (nextBtn) nextBtn.addEventListener('click', () => goTo(current + 1));
+
+        let touchStartX = 0;
+        track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+        track.addEventListener('touchend', e => {
+            const diff = touchStartX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
+        }, { passive: true });
+
+        buildDots();
+        goTo(0);
+        window.addEventListener('resize', () => { buildDots(); goTo(0); }, { passive: true });
+    })();
+</script>
+
+    <script src="/js/chatbot.js"></script>
+</body>
+</html>

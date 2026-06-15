@@ -1,0 +1,459 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #f8f9fa;
+    color: #111;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* шапка */
+.header {
+    background: white;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: box-shadow 0.3s ease;
+}
+
+.logo {
+    height: 60px;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    gap: 35px;
+    align-items: center;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s;
+    position: relative;
+}
+
+.nav ul li a:hover,
+.nav ul li a.active {
+    color: #3b4cff;
+}
+
+.nav ul li a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #3b4cff;
+}
+
+/* страница специальности */
+.specialty-detail {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 80px 60px 90px;
+}
+
+.specialty-title {
+    text-align: center;
+    font-size: 42px;
+    font-weight: 800;
+    background: linear-gradient(149deg, rgba(64, 84, 255, 1) 0%, rgba(24, 38, 202, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 55px;
+    line-height: 1.25;
+}
+
+/* карточка с описанием */
+.specialty-description {
+    background: white;
+    border-radius: 22px;
+    padding: 45px 50px;
+    margin-bottom: 45px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.specialty-description:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.11);
+}
+
+.specialty-description p {
+    font-size: 15px;
+    line-height: 1.85;
+    color: #444;
+    margin-bottom: 18px;
+    text-align: justify;
+}
+
+.specialty-description p:last-child {
+    margin-bottom: 0;
+}
+
+.specialty-description ul {
+    list-style: none;
+    margin: 20px 0;
+    padding-left: 0;
+}
+
+.specialty-description ul li {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #444;
+    padding-left: 30px;
+    position: relative;
+    margin-bottom: 12px;
+}
+
+.specialty-description ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #3b4cff;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+/* faq в том же стиле что на главной */
+.faq-section {
+    margin-top: 10px;
+}
+
+.faq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.faq-item {
+    background: #4054FF;
+    background: linear-gradient(149deg, rgba(64, 84, 255, 1) 0%, rgba(24, 38, 202, 1) 100%);
+    border-radius: 50px;
+    padding: 22px 35px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.faq-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(59, 76, 255, 0.32);
+}
+
+.faq-question {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    gap: 16px;
+}
+
+.faq-icon {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.faq-icon i {
+    color: #3b4cff;
+    font-size: 13px;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 14px;
+    line-height: 1.75;
+    max-height: 0;
+    overflow: hidden;
+    padding-right: 44px;
+    transition: max-height 0.38s ease, margin-top 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 600px;
+    margin-top: 14px;
+}
+
+/* кнопки действий */
+.action-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.btn-primary {
+    padding: 15px 42px;
+    background: #3b4cff;
+    background: linear-gradient(149deg, rgba(64, 84, 255, 1) 0%, rgba(24, 38, 202, 1) 100%);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(59, 76, 255, 0.35);
+}
+
+.btn-secondary {
+    padding: 15px 42px;
+    background: white;
+    color: #3b4cff;
+    border: 2px solid #3b4cff;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(149deg, rgba(64, 84, 255, 1) 0%, rgba(24, 38, 202, 1) 100%);
+    color: white;
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(59, 76, 255, 0.35);
+}
+
+/* подвал */
+.footer {
+    background: #2a2a2a;
+    padding: 50px 0 30px;
+    margin-top: 80px;
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 60px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 50px;
+    margin-bottom: 40px;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.footer-section p {
+    font-size: 14px;
+    color: #b0b0b0;
+    line-height: 1.7;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: #b0b0b0;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #3b4cff;
+}
+
+.footer-contact p {
+    font-size: 14px;
+    color: #b0b0b0;
+    margin-bottom: 8px;
+}
+
+.footer-contact a {
+    color: #b0b0b0;
+    text-decoration: none;
+    transition: color 0.3s;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.footer-contact a:hover {
+    color: #3b4cff;
+}
+
+.footer-social {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.footer-social a {
+    width: 36px;
+    height: 36px;
+    background: #3a3a3a;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #b0b0b0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 15px;
+}
+
+.footer-social a:hover {
+    background: #3b4cff;
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* адаптив */
+@media (max-width: 1024px) {
+    .header {
+        padding: 20px 40px;
+    }
+
+    .nav ul {
+        gap: 20px;
+    }
+
+    .nav ul li a {
+        font-size: 13px;
+    }
+
+    .specialty-detail {
+        padding: 60px 40px 70px;
+    }
+
+    .specialty-title {
+        font-size: 36px;
+    }
+
+    .specialty-description {
+        padding: 35px 40px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        padding: 0 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .specialty-detail {
+        padding: 40px 20px 60px;
+    }
+
+    .specialty-title {
+        font-size: 28px;
+        margin-bottom: 35px;
+    }
+
+    .specialty-description {
+        padding: 25px 22px;
+    }
+
+    .faq-item {
+        padding: 18px 22px;
+        border-radius: 18px;
+    }
+
+    .faq-question {
+        font-size: 14px;
+    }
+
+    .faq-answer {
+        padding-right: 0;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 0 20px;
+    }
+
+    .footer {
+        padding: 40px 0 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        height: 45px;
+    }
+
+    .specialty-title {
+        font-size: 24px;
+    }
+}
